@@ -38,49 +38,54 @@ const Home = () => {
             setBlogs(result)
         }
     }
+
+    const resetHandler=()=>{
+        
+    }
   return (
     <div className='generalContainer  '>
-    {
-        (blogs.length===0)? (
-            <div className='w-full h-[calc(100vh-3.1rem)] flexCenter text-customGreen text-xl lg:text-2xl'>
-                No Blogs Available Now...
-            </div>
-        ) : (
-            <div className='w-full min-h-[calc(100vh-5rem)] flex flex-col my-6 gap-y-5   '>
+        <div>
+            <div> Add Filters:</div>
 
-            <div>
-                <div> Add Filters:</div>
+            <form onSubmit={handleSubmit(getFilterBlogsData)}>
+                <TagInput
+                    name="tags"
+                    placeholder="Enter Tags and press Enter"
+                    register={register}
+                    errors={errors}
+                    setValue={setValue}
+                    getValues={getValues}
+                    initialTags={tags}
+                />
 
-                <form onSubmit={handleSubmit(getFilterBlogsData)}>
-                    <TagInput
-                        name="tags"
-                        placeholder="Enter Tags and press Enter"
-                        register={register}
-                        errors={errors}
-                        setValue={setValue}
-                        getValues={getValues}
-                        initialTags={tags}
-                    />
+                <div className='w-fit flex items-center gap-x-4'>
+                    <button type='submit'  className='bg-darkGreen mt-3 text-[0.7rem] md:text-[1rem] text-white font-bold px-3  md:px-4 py-2 rounded-md hover:scale-95 transition-scale duration-300'>
+                        Get Blogs
+                    </button>
 
-                    <div className='w-fit flex items-center gap-x-4'>
-                        <button type='submit'  className='bg-darkGreen mt-3 text-[0.7rem] md:text-[1rem] text-white font-bold px-3  md:px-4 py-2 rounded-md hover:scale-95 transition-scale duration-300'>
-                            Get Blogs
-                        </button>
-
-                        <button onClick={fetchBlogs}  className='bg-darkGreen mt-3 text-[0.7rem] md:text-[1rem] text-white font-bold px-3  md:px-4 py-2 rounded-md hover:scale-95 transition-scale duration-300'>
-                            Reset
-                        </button>
+                    <div onClick={fetchBlogs}  className='bg-darkGreen mt-3 cursor-pointer text-[0.7rem] md:text-[1rem] text-white font-bold px-3  md:px-4 py-2 rounded-md hover:scale-95 transition-scale duration-300'>
+                        Reset
                     </div>
-                </form>    
-            </div>
-            {
-                blogs.map((item)=>(
-                    <BlogCard key={item._id} item={item} setBlogsUpdate={setBlogsUpdate} />
-                ))
-            }
-            </div>
-        )
-    }
+                </div>
+            </form>    
+        </div>
+        {
+            (blogs.length===0)? (
+                <div className='w-full h-[calc(100vh-15rem)] flexCenter text-customGreen text-xl lg:text-2xl '>
+                    No Blogs Available Now...
+                </div>
+            ) : (
+                <div className='w-full min-h-[calc(100vh-5rem)] flex flex-col my-6 gap-y-5   '>
+
+                
+                {
+                    blogs.map((item)=>(
+                        <BlogCard key={item._id} item={item} setBlogsUpdate={setBlogsUpdate} />
+                    ))
+                }
+                </div>
+            )
+        }
     </div>
   )
 }
