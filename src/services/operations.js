@@ -14,8 +14,8 @@ export const signup = async(data) =>{
             toast.error(response.data.message)
             throw new Error(response.data.message)
         }
+        toast.success("Sign up success")
         return true
-        // toast.success("Sign up success")
     } catch(error){
         console.log("SIGNUP API ERROR............", error)
         if (axios.isAxiosError(error)) {
@@ -104,6 +104,7 @@ export const createBlog=async(data , token)=>{
         if (!response?.data?.success) {
             throw new Error("Could Not Create blog")
         }
+        toast.success("Blog created!!!")
 
         return true
 
