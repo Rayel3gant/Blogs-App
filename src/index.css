@@ -1,13 +1,39 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+/* Custom class to hide scrollbars */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+@layer utilities {
+  .flexCenter{
+    @apply flex justify-center items-center
+  }
+
+  .generalContainer{
+    @apply w-11/12 mx-auto
+  }
+  .formInput{
+    @apply outline-0 bg-[#F3F5F7] p-2 rounded-md
+  }
+  .formLabel{
+    @apply text-sm text-darkGray
+  }
+  .formError{
+    @apply text-[12px] text-red-500
+  }
+
+  
+
 }

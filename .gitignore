@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# Ignore node_modules folders in both backend and frontend
+server/node_modules/
+src/node_modules/
+
+# Ignore .env files in both backend and frontend
+server/.env
+src/.env
